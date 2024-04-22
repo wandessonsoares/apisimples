@@ -1,5 +1,5 @@
-FROM openjdk:17-jdk-slim-buster
-EXPOSE 8080
-ARG JAR_FILE=target/carros-api-1.0-SNAPSHOT.jar
-ADD ${JAR_FILE} carros-api-1.0-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/carros-api-1.0-SNAPSHOT.jar"]
+FROM openjdk:17-jdk-alpine
+RUN mkdir /app
+WORKDIR /app
+COPY target/*.jar /app/app.jar
+CMD ["java","-jar","/app/app.jar"]
